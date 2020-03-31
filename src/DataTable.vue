@@ -1,16 +1,18 @@
 <template>
-	<div class="card material-table" ref="table">
+	<div ref="table" class="card">
 		<div class="table-header">
 			<span class="table-title">{{ title }}</span>
 			<div class="actions">
-				<a v-for="(button, index) in customButtons" v-if="button.hide ? !button.hide : true"
-					:key="index"
-					href="javascript:undefined"
-					class="waves-effect btn-flat nopadding"
-					@click="button.onclick"
-				>
-					<i class="material-icons">{{ button.icon }}</i>
-				</a>
+				<span v-for="(button, index) in customButtons" :key="index">
+					<a v-if="button.hide ? !button.hide : true"
+						:key="index"
+						href="javascript:undefined"
+						class="waves-effect btn-flat nopadding"
+						@click="button.onclick"
+					>
+						<i class="material-icons">{{ button.icon }}</i>
+					</a>
+				</span>
 				<a v-if="printable"
 					href="javascript:undefined"
 					class="waves-effect btn-flat nopadding"
@@ -37,13 +39,13 @@
 		<div v-if="searching">
 			<div id="search-input-container">
 				<label>
-					<input id="search-input" type="search" class="form-control" :placeholder="lang['search_data']"
-						v-model="searchInput"
+					<input id="search-input" v-model="searchInput" type="search" class="form-control"
+						:placeholder="lang['search_data']"
 					>
 				</label>
 			</div>
 		</div>
-		<table ref="table">
+		<table ref="table" :class="tableClasses">
 			<thead>
 				<tr>
 					<th v-for="(column, index) in columns"
@@ -162,6 +164,17 @@
 				required: true,
 			},
 
+			tableClasses: {
+				type: String,
+				required: false,
+				default: 'table table-bordered',
+			},
+
+			theadClasses: {
+				type: String,
+				required: false,
+				default: '',
+			},
 			columns: {
 				type: Array,
 				required: true,
@@ -394,7 +407,7 @@
 				const splitter = selector.split('.');
 
 				for (let i = 0; i < splitter.length; i++) {
-					if (result == undefined)
+					if (result === undefined)
 						return undefined;
 
 					result = result[splitter[i]];
@@ -541,7 +554,7 @@
 				if (this.paginate && this.currentPerPage !== -1)
 					paginatedRows = paginatedRows.slice(
 						(this.currentPage - 1) * this.currentPerPage,
-						this.currentPerPage === -1 ? paginatedRows.length + 1 : this.currentPage * this.currentPerPage
+						this.currentPerPage === -1 ? paginatedRows.length + 1 : this.currentPage * this.currentPerPage,
 					);
 
 				return paginatedRows;
@@ -712,7 +725,7 @@
 		color: #000;
 	}
 
-	table tr td {
+	/* table tr td {
 		padding: 0 0 0 56px;
 		height: 48px;
 		font-size: 13px;
@@ -759,7 +772,7 @@
 	table th:hover {
 		overflow: visible;
 		text-overflow: initial;
-	}
+	} */
 
 	table th.sorting-asc,
 	table th.sorting-desc {
