@@ -594,9 +594,10 @@
 		border-bottom: solid 1px #DDDDDD;
 	}
 
-	table {
+	/* table {
 		table-layout: fixed;
-	}
+		overflow-x: scroll;
+	} */
 
 	.table-header {
 		height: 64px;
