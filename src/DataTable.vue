@@ -45,54 +45,56 @@
 				</label>
 			</div>
 		</div>
-		<table ref="table" :class="tableClasses">
-			<thead>
-				<tr>
-					<th v-for="(column, index) in columns"
-						:key="index"
-						:class="(sortable ? 'sorting ' : '')
-							+ (sortColumn === index ?
-								(sortType === 'desc' ? 'sorting-desc' : 'sorting-asc')
-								: '')
-							+ (column.numeric ? ' numeric' : '')"
-						:style="{width: column.width ? column.width : 'auto'}"
-						@click="sort(index)"
-					>
-						{{ column.label }}
-					</th>
-					<slot name="thead-tr" />
-				</tr>
-			</thead>
-
-			<tbody>
-				<tr v-for="(row, index) in paginated"
-					:key="index"
-					:class="{ clickable : clickable }"
-					@click="click(row)"
-				>
-					<td v-for="(column, columnIndex) in columns"
-						:key="columnIndex"
-						:class="{ numeric : column.numeric }"
-					>
-						<div v-if="!column.html">
-							{{ collect(row, column.field) }}
-						</div>
-						<div v-if="column.html" v-html="collect(row, column.field)" />
-					</td>
-					<slot name="tbody-tr" :row="row" />
-				</tr>
-
-				<template v-if="rows.length === 0 && loadingAnimation === true">
-					<tr v-for="n in (currentPerPage === -1 ? 10 : currentPerPage)"
-						:key="n"
-					>
-						<td :colspan="columns.length">
-							<tb-skeleton :height="15" theme="opacity" bg-color="#dcdbdc" shape="radius" />
-						</td>
+		<div :class="parentDivClasses">
+			<table ref="table" :class="tableClasses">
+				<thead>
+					<tr>
+						<th v-for="(column, index) in columns"
+							:key="index"
+							:class="(sortable ? 'sorting ' : '')
+								+ (sortColumn === index ?
+									(sortType === 'desc' ? 'sorting-desc' : 'sorting-asc')
+									: '')
+								+ (column.numeric ? ' numeric' : '')"
+							:style="{width: column.width ? column.width : 'auto'}"
+							@click="sort(index)"
+						>
+							{{ column.label }}
+						</th>
+						<slot name="thead-tr" />
 					</tr>
-				</template>
-			</tbody>
-		</table>
+				</thead>
+
+				<tbody>
+					<tr v-for="(row, index) in paginated"
+						:key="index"
+						:class="{ clickable : clickable }"
+						@click="click(row)"
+					>
+						<td v-for="(column, columnIndex) in columns"
+							:key="columnIndex"
+							:class="{ numeric : column.numeric }"
+						>
+							<div v-if="!column.html">
+								{{ collect(row, column.field) }}
+							</div>
+							<div v-if="column.html" v-html="collect(row, column.field)" />
+						</td>
+						<slot name="tbody-tr" :row="row" />
+					</tr>
+
+					<template v-if="rows.length === 0 && loadingAnimation === true">
+						<tr v-for="n in (currentPerPage === -1 ? 10 : currentPerPage)"
+							:key="n"
+						>
+							<td :colspan="columns.length">
+								<tb-skeleton :height="15" theme="opacity" bg-color="#dcdbdc" shape="radius" />
+							</td>
+						</tr>
+					</template>
+				</tbody>
+			</table>
+		</div>
 
 		<div v-if="paginate" class="table-footer">
 			<div :class="{'datatable-length': true, 'rtl': lang.__is_rtl}">
@@ -162,6 +164,11 @@
 			title: {
 				type: String,
 				required: true,
+			},
+			parentDivClasses: {
+				type: String,
+				required: false,
+				default: 'table-responsive',
 			},
 
 			tableClasses: {
