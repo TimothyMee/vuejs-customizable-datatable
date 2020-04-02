@@ -50,7 +50,7 @@
 				<thead>
 					<tr>
 						<th v-if="enableCheckbox">
-							<!-- <input id="select-all" type="checkbox" style="margin-right:10%;" @click="selectAll"> -->
+							<input id="select-all" type="checkbox" style="margin-right:10%;" @click="selectAll">
 							<!-- <label style="position:relative;  top:-4.5px;">Select All</label> -->
 						</th>
 						<th v-for="(column, index) in columns"
@@ -462,21 +462,21 @@
 					return undefined;
 			},
 
-			// selectAll() {
-			// 	let masterCheckbox = document.querySelectorAll(
-			// 		'thead input[type=\'checkbox\']',
-			// 	);
-			// 	let otherCheckboxes = document.querySelectorAll(
-			// 		'tbody input[type=\'checkbox\']',
-			// 	);
-			// 	for (let i = 0; i < otherCheckboxes.length; i++) {
-			// 		const checkbox = otherCheckboxes[i];
-			// 		if(masterCheckbox[0].checked !== checkbox.checked){
-			// 			checkbox.click();
-			// 		}
-			// 	}
-			// 	console.log(otherCheckboxes);
-			// },
+			selectAll() {
+				let masterCheckbox = document.querySelectorAll(
+					'thead input[type=\'checkbox\']',
+				);
+				let otherCheckboxes = document.querySelectorAll(
+					'tbody input[type=\'checkbox\']',
+				);
+				for (let i = 0; i < otherCheckboxes.length; i++) {
+					const checkbox = otherCheckboxes[i];
+					if(masterCheckbox[0].checked !== checkbox.checked){
+						checkbox.click();
+					}
+				}
+				console.log(otherCheckboxes);
+			},
 
 			/* https://codebottle.io/s/31b70f5391
 			 *
