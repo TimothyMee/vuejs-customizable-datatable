@@ -475,7 +475,6 @@
 						checkbox.click();
 					}
 				}
-				console.log(otherCheckboxes);
 			},
 
 			/* https://codebottle.io/s/31b70f5391
