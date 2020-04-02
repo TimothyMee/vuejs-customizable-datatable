@@ -49,6 +49,10 @@
 			<table ref="table" :class="tableClasses">
 				<thead>
 					<tr>
+						<th v-if="enableCheckbox">
+							<!-- <input id="select-all" type="checkbox" style="margin-right:10%;" @click="selectAll"> -->
+							<!-- <label style="position:relative;  top:-4.5px;">Select All</label> -->
+						</th>
 						<th v-for="(column, index) in columns"
 							:key="index"
 							:class="(sortable ? 'sorting ' : '')
@@ -71,6 +75,19 @@
 						:class="{ clickable : clickable }"
 						@click="click(row)"
 					>
+						<td v-if="enableCheckbox">
+							<span v-if="checkboxValueField === ''">
+								<input v-model="checkBoxes" type="checkbox" style="margin-right:10%;" :value="row">
+							</span>
+							<span v-else>
+								<input 
+									v-model="checkBoxes" 
+									type="checkbox" 
+									style="margin-right:10%;" 
+									:value="row[checkboxValueField]"
+								>
+							</span>
+						</td>
 						<td v-for="(column, columnIndex) in columns"
 							:key="columnIndex"
 							:class="{ numeric : column.numeric }"
@@ -282,6 +299,18 @@
 				default: true,
 			},
 
+			enableCheckbox: {
+				type: Boolean,
+				required: false,
+				default: false,
+			},
+
+			checkboxValueField: {
+				type: String,
+				required: false,
+				default: '',
+			},
+
 		},
 
 		data: () => ({
@@ -291,6 +320,7 @@
 			sortType: 'asc',
 			searching: false,
 			searchInput: '',
+			checkBoxes: [],
 		}),
 
 		methods: {
@@ -432,6 +462,22 @@
 					return undefined;
 			},
 
+			// selectAll() {
+			// 	let masterCheckbox = document.querySelectorAll(
+			// 		'thead input[type=\'checkbox\']',
+			// 	);
+			// 	let otherCheckboxes = document.querySelectorAll(
+			// 		'tbody input[type=\'checkbox\']',
+			// 	);
+			// 	for (let i = 0; i < otherCheckboxes.length; i++) {
+			// 		const checkbox = otherCheckboxes[i];
+			// 		if(masterCheckbox[0].checked !== checkbox.checked){
+			// 			checkbox.click();
+			// 		}
+			// 	}
+			// 	console.log(otherCheckboxes);
+			// },
+
 			/* https://codebottle.io/s/31b70f5391
 			 *
 			 * @author: Luigi D'Amico (www.8bitplatoon.com)
@@ -470,6 +516,7 @@
 
 				return cssAccumulator.join('; ');
 			},
+			
 		},
 
 		watch: {
@@ -486,6 +533,10 @@
 			searchInput(newSearchInput) {
 				if (this.searching && this.serverSearch && this.serverSearchFunc)
 					this.serverSearchFunc(newSearchInput);
+			},
+
+			checkBoxes() {
+				this.$emit('checked-boxes', this.checkBoxes);
 			},
 		},
 
@@ -733,55 +784,6 @@
 		color: #000;
 	}
 
-	/* table tr td {
-		padding: 0 0 0 56px;
-		height: 48px;
-		font-size: 13px;
-		color: rgba(0, 0, 0, 0.87);
-		border-bottom: solid 1px #DDDDDD;
-		white-space: nowrap;
-		overflow: hidden;
-		text-overflow: ellipsis;
-	}
-
-	table td, table th {
-		border-radius: 0;
-	}
-
-	table tr td a {
-		color: inherit;
-	}
-
-	table tr td a i {
-		font-size: 18px;
-		color: rgba(0, 0, 0, 0.54);
-	}
-
-	table tr {
-		font-size: 12px;
-	}
-
-	table th {
-		font-size: 12px;
-		font-weight: 500;
-		color: #757575;
-		cursor: pointer;
-		white-space: nowrap;
-		padding: 0;
-		height: 56px;
-		padding-left: 56px;
-		vertical-align: middle;
-		outline: none !important;
-
-		overflow: hidden;
-		text-overflow: ellipsis;
-	}
-
-	table th:hover {
-		overflow: visible;
-		text-overflow: initial;
-	} */
-
 	table th.sorting-asc,
 	table th.sorting-desc {
 		color: rgba(0, 0, 0, 0.87);
@@ -831,5 +833,45 @@
 
 	.rtl {
 		direction: rtl;
+	}
+
+input[type="checkbox"] {
+  position: relative;
+  width: 1.9em;
+  height: 1.8em;
+  color: black;
+  border: 1px solid gray;
+  border-radius: 4px;
+  appearance: none;
+  outline: 0;
+  cursor: pointer;
+  margin-top:10px;
+  transition: background 175ms cubic-bezier(0.1, 0.1, 0.25, 1);
+  top:-1.5px;
+}
+input[type="checkbox"]:before {
+    position: absolute;
+    content: '';
+    display: block;
+    top: 1px;
+    left: 6px;
+    width: 8px;
+    height: 14px;
+    border-style: solid;
+    border-color: white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+    opacity: 0;
+  }
+  input[type="checkbox"]:checked {
+    color: white;
+    border-color: #2196F3;
+    background: #2196F3;
+  }
+	input[type="checkbox"]:before {
+		opacity: 1;
+	}
+	input[type="checkbox"] label::before {
+		clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 	}
 </style>
