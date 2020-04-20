@@ -85,7 +85,7 @@
 									type="checkbox" 
 									style="margin-right:10%;" 
 									:value="row[checkboxValueField]"
-								>
+								>{{row[checkboxValueField]}}
 							</span>
 						</td>
 						<td v-for="(column, columnIndex) in columns"
@@ -328,11 +328,16 @@
 					return undefined;
 			},
 
-			selectAll() {
-				let masterCheckbox = document.querySelectorAll(
+			selectAll(e) {
+				//getting the parent table
+				//probably not the most efficient
+				//but didn't want to use the other method for flexibility sake
+				const parentElement = e.target.parentElement.parentElement.parentElement.parentElement;
+				let masterCheckbox = parentElement.querySelectorAll(
 					'thead input[type=\'checkbox\']',
 				);
-				let otherCheckboxes = document.querySelectorAll(
+
+				let otherCheckboxes = parentElement.querySelectorAll(
 					'tbody input[type=\'checkbox\']',
 				);
 				for (let i = 0; i < otherCheckboxes.length; i++) {
