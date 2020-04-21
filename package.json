@@ -1,30 +1,36 @@
 {
-  "name": "vuejs-datatable",
-  "version": "1.0.0",
-  "description": "A Flexible Datatable for VueJS",
+  "name": "vue-customizable-datatable",
+  "version": "1.0.1",
+  "description": "A Flexible and Customizable Datatable for VueJS",
   "author": "Timothy Fadayini <timothy33.tf@gmail.com>",
   "private": false,
   "main": "./src/DataTable.vue",
   "license": "MIT",
   "scripts": {
-    "docs:dev": "cross-env NODE_ENV=development webpack --progress --hide-modules --watch",
-    "docs:prod": "cross-env NODE_ENV=production webpack --progress --hide-modules"
+    
   },
   "keywords": [
     "Vue",
     "Datatable",
+    "Vue Datatable",
+    "Vue js",
+    "Table",
+    "Responsible",
     "Flexible",
+    "Customizable",
     "Table Component",
     "Bootstrap",
-    "Material"
+    "Material",
+    "Bulma",
+    "Tailwind"
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/"
+    "url": "git+https://github.com/TimothyMee/vuejs-datatable/"
   },
-  "homepage": "https://github.com",
+  "homepage": "https://github.com/TimothyMee/vuejs-datatable",
   "bugs": {
-    "url": "https://github.com/"
+    "url": "https://github.com/TimothyMee/vuejs-datatable"
   },
   "dependencies": {
     "fuse.js": "^2.6.2",
