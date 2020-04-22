@@ -39,7 +39,7 @@
   "bugs": {
     "url": "https://github.com/TimothyMee/vuejs-customizable-datatable"
   },
-  "homepage": "https://github.com/TimothyMee/vuejs-customizable-datatable",
+  "homepage": "https://vue-customizable-datatable.netlify.app/",
   "keywords": [
     "Vue",
     "Datatable",
