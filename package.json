@@ -40,9 +40,9 @@
     "webpack-cli": "^3.3.9"
   },
   "bugs": {
-    "url": "https://github.com/TimothyMee/vuejs-datatable"
+    "url": "https://github.com/TimothyMee/vuejs-customizable-datatable"
   },
-  "homepage": "https://github.com/TimothyMee/vuejs-datatable",
+  "homepage": "https://github.com/TimothyMee/vuejs-customizable-datatable",
   "keywords": [
     "Vue",
     "Datatable",
@@ -61,6 +61,6 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TimothyMee/vuejs-datatable/"
+    "url": "git+https://github.com/TimothyMee/vuejs-customizable-datatable/"
   }
 }
