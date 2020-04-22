@@ -1,1 +1,1 @@
-# vuejs-datatable
+# vue-customizable-datatable
