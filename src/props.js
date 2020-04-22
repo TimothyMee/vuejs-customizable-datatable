@@ -90,7 +90,7 @@ export default {
         default: true,
     },
 
-    exportable: {
+    exportToExcel: {
         type: Boolean,
         required: false,
         default: true,

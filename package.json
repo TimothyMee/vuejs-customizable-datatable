@@ -1,12 +1,9 @@
 {
   "name": "vue-customizable-datatable",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "private": false,
   "description": "A Flexible and Customizable Datatable for VueJS",
   "author": "Timothy Fadayini <timothy33.tf@gmail.com>",
-  "publishConfig": { 
-    "registry": "https://npm.pkg.github.com/" 
-  },
   "main": "./src/DataTable.vue",
   "dependencies": {
     "fuse.js": "^2.6.2",
