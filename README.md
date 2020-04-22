@@ -9,6 +9,7 @@ https://vue-customizable-datatable.netlify.app/
 ## Requirements
 
 - VueJS
+- Any css library or your custom css to give the table your desired style and classes. (It is a very customizable datatable)
 
 ## Installation
 
@@ -42,7 +43,7 @@ And then.. use the component:
 <data-table></data-table>
 ```
 
-Of course, code above will render garbage. Here are the props it accepts to render some sensible data:
+Of course, code above won't render anything. Here are the props it accepts to render some sensible data:
 
 <table>
   <tr>
