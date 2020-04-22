@@ -1,0 +1,63 @@
+{
+  "name": "vue-customizable-datatable",
+  "version": "1.0.2",
+  "private": false,
+  "description": "A Flexible and Customizable Datatable for VueJS",
+  "author": "Timothy Fadayini <timothy33.tf@gmail.com>",
+  "main": "./src/DataTable.vue",
+  "dependencies": {
+    "fuse.js": "^2.6.2",
+    "html-webpack-plugin": "^3.2.0",
+    "tb-skeleton": "^0.3.5",
+    "vue": "^2.6.10"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.4",
+    "@babel/plugin-syntax-object-rest-spread": "^7.2.0",
+    "@babel/plugin-transform-runtime": "^7.6.2",
+    "@babel/preset-env": "^7.6.3",
+    "@vue/cli-service": "^4.3.1",
+    "babel-loader": "^8.0.6",
+    "copy-webpack-plugin": "^5.0.4",
+    "cross-env": "^6.0.3",
+    "eslint": "^6.6.0",
+    "eslint-plugin-vue": "^5.2.3",
+    "file-loader": "^4.2.0",
+    "highlight.js": "^9.15.10",
+    "materialize-css": "^1.0.0",
+    "mini-css-extract-plugin": "^0.8.0",
+    "node-sass": "^4.13.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.3",
+    "sass-loader": "^8.0.0",
+    "terser-webpack-plugin": "^2.2.1",
+    "vue-loader": "^15.7.1",
+    "vue-style-loader": "^4.1.2",
+    "vue-template-compiler": "^2.6.10",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.9"
+  },
+  "bugs": {
+    "url": "https://github.com/TimothyMee/vuejs-customizable-datatable"
+  },
+  "homepage": "https://github.com/TimothyMee/vuejs-customizable-datatable",
+  "keywords": [
+    "Vue",
+    "Datatable",
+    "Vue Datatable",
+    "Vue js",
+    "Table",
+    "Responsible",
+    "Flexible",
+    "Customizable",
+    "Table Component",
+    "Bootstrap",
+    "Material",
+    "Bulma",
+    "Tailwind"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TimothyMee/vuejs-customizable-datatable/"
+  }
+}

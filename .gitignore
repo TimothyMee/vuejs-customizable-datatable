@@ -1,0 +1,7 @@
+npm-debug.log
+node_modules
+dist
+package-lock.json
+.vscode
+src/components
+styleguide.config.js
