@@ -101,7 +101,7 @@
 					</tr>
 
 					<template v-if="rows.length === 0 && loadingAnimation === true">
-						<tr v-for="n in (currentPerPage === -1 ? 10 : currentPerPage)"
+						<tr v-for="n in 5"
 							:key="n"
 						>
 							<td :colspan="columns.length">
