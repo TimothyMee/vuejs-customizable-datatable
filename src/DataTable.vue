@@ -85,7 +85,7 @@
 									type="checkbox" 
 									style="margin-right:10%;" 
 									:value="row[checkboxValueField]"
-								>{{row[checkboxValueField]}}
+								>
 							</span>
 						</td>
 						<td v-for="(column, columnIndex) in columns"
