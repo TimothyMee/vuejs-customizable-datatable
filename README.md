@@ -1,5 +1,4 @@
-# vue-customizable-datatable
-
+# vue-customizable-datatable ![npm](https://img.shields.io/npm/v/vue-customizable-datatable) ![GitHub](https://img.shields.io/github/license/TimothyMee/vuejs-customizable-datatable)
 > A flexible and customizable datatable VueJS component
 
 ## Demo
